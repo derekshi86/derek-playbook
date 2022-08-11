@@ -12,7 +12,7 @@ WHITE = (255,255,255)
 GREEN = (0,255,0)
 RED = (255,0,0)
 YELLOW = (255,255,0)
-BLACK = (0,0,255)
+BLACK = (0,0,0)
 
 # initialize game and build game console 
 
@@ -51,6 +51,7 @@ class Player(pygame.sprite.Sprite):
     def shoot(self):
         bullet = Bullet(self.rect.centerx, self.rect.top)
         all_sprites.add(bullet)
+        bullets.add(bullet)
 
         #self.rect.x += 2
         #if self.rect.left > WIDTH:
@@ -106,6 +107,8 @@ class Bullet(pygame.sprite.Sprite):
 
 
 all_sprites = pygame.sprite.Group()
+rocks = pygame.sprite.Group()
+bullets = pygame.sprite.Group()
 player = Player()
 all_sprites.add(player)
 #rock = Rock()
@@ -114,6 +117,7 @@ all_sprites.add(player)
 for i in range(8):
     r = Rock()
     all_sprites.add(r)
+    rocks.add(r)
 
 
 running = True
@@ -134,9 +138,17 @@ while running:
 
 # update game
     all_sprites.update()
+    hits = pygame.sprite.groupcollide(rocks, bullets, True, True)
+    for hit in hits:
+        r = Rock()
+        all_sprites.add(r)
+        rocks.add(r)
 
+    hits = pygame.sprite.groupcollide(player, rocks, True)
+    if hits:
+        running = False
 #dispaly to screen
-    screen.fill(WHITE)
+    screen.fill(BLACK)
     all_sprites.draw(screen)
     pygame.display.update()
 
