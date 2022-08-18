@@ -2,6 +2,7 @@
 
 import pygame
 import random
+import sys
 
 FPS = 60
 WIDTH = 600
@@ -20,6 +21,8 @@ pygame.init()
 screen = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption("space shooting")
 clock = pygame.time.Clock()
+
+pygame.image.load(os.path.join(""))
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -144,9 +147,9 @@ while running:
         all_sprites.add(r)
         rocks.add(r)
 
-    hits = pygame.sprite.groupcollide(player, rocks, True)
-    if hits:
-        running = False
+    #hits = pygame.sprite.groupcollide(player, rocks, False,False)
+    #if hits:
+    #    running = False
 #dispaly to screen
     screen.fill(BLACK)
     all_sprites.draw(screen)
