@@ -1,0 +1,6 @@
+name = input("please enter you name:")
+age = input(("please enter your age:"))
+number1 = input("first test result:")
+number2 = input("second test result:")
+print ("hello " + name+ "\n" + "your age is: " + age)
+print("your total test result is:"+ str(float(number1) + float(number2)))
