@@ -22,7 +22,7 @@ screen = pygame.display.set_mode((WIDTH,HEIGHT))
 pygame.display.set_caption("space shooting")
 clock = pygame.time.Clock()
 
-pygame.image.load(os.path.join(""))
+backgroud_img = pygame.image.load(os.path.join("img", "background.jpg")).convert()
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
@@ -152,6 +152,7 @@ while running:
     #    running = False
 #dispaly to screen
     screen.fill(BLACK)
+    screen.blit(backgroud_img, (0.0))
     all_sprites.draw(screen)
     pygame.display.update()
 
